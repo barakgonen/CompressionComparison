@@ -26,11 +26,11 @@ public class Main {
         HashMap<AbstractCompressorDecompressor<Bill>, RunResult> compressorToPerformance = new HashMap<>();
 
         ArrayList<Integer> repeats = new ArrayList<>();
-//        repeats.add(100);
-//        repeats.add(1000);
+        repeats.add(100);
+        repeats.add(1000);
         repeats.add(10000);
-        repeats.add(100000);
-        repeats.add(1000000);
+//        repeats.add(100000);
+//        repeats.add(1000000);
 //        repeats.add(10000000);
 //        repeats.add(100000000);
 //        repeats.add(1000000000);
@@ -40,7 +40,7 @@ public class Main {
             compressorToPerformance.put(CompressorFactory.getCompressor(value), new RunResult());
         }
 
-        for (int i = 0; i < repeats.size(); i++){
+        for (int i = 0; i < repeats.size(); i++) {
             int numberOfRepeats = repeats.get(i);
 
             for (Map.Entry<AbstractCompressorDecompressor<Bill>, RunResult> entry : compressorToPerformance.entrySet()) {
@@ -65,13 +65,6 @@ public class Main {
                 .forEach(integerCompressorTypeEntry ->
                         System.out.println(integerCompressorTypeEntry.getKey() + ": "
                                 + integerCompressorTypeEntry.getValue()));
-
-
-
-
-//        compressorToPerformance.entrySet().stream().sorted((o1, o2) -> {(o1.getValue().getAvgRuntime() > o2.getValue().getAvgRuntime()) ? return o1 : re.collect(Collectors.toCollection());
-//        compressorToPerformance.forEach((billAbstractCompressorDecompressor, runResult) -> System.out.println(billAbstractCompressorDecompressor.getCompressorType() + " " + runResult));
-
     }
 
     private static RunResult getRunResultForCompressor(AbstractCompressorDecompressor<Bill> compressorDecompressor, int numberOfRepeats) {
@@ -82,7 +75,7 @@ public class Main {
             long startTime = System.currentTimeMillis();
             try {
                 // Define the compressor
-                var compressedValue = compressorDecompressor.compress(b1);
+                byte[] compressedValue = compressorDecompressor.compress(b1);
                 Bill uncompressedValue = compressorDecompressor.uncompress(compressedValue);
                 if (!uncompressedValue.equals(b1)) {
                     System.out.println("ERROR");
