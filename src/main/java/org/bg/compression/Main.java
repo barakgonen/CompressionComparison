@@ -26,11 +26,11 @@ public class Main {
         HashMap<AbstractCompressorDecompressor<Bill>, RunResult> compressorToPerformance = new HashMap<>();
 
         ArrayList<Integer> repeats = new ArrayList<>();
-        repeats.add(100);
-        repeats.add(1000);
+//        repeats.add(100);
+//        repeats.add(1000);
         repeats.add(10000);
-//        repeats.add(100000);
-//        repeats.add(1000000);
+        repeats.add(100000);
+        repeats.add(1000000);
 //        repeats.add(10000000);
 //        repeats.add(100000000);
 //        repeats.add(1000000000);
